@@ -27,4 +27,9 @@
 .navItem {
   font-size: 2rem;
   font-weight: 500;
+  transition: color 150ms;
+}
+
+.navItem:hover {
+  color: #DCDCDC;
 }
