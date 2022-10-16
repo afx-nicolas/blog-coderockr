@@ -1,0 +1,54 @@
+.article {
+  width: min(1280px, 100%);
+  background-color: #FFF;
+  margin: 6.25rem auto 13.625rem;
+}
+
+.articleHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.coverWrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+
+.cover {
+  width: 100%;
+  object-fit: contain;
+}
+
+.articleInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.75rem 6.25rem;
+}
+
+.date {
+  font-size: 1.125rem;
+  margin-bottom: 2.75rem;
+}
+
+.author {
+  font-size: 1.5rem;
+  font-style: normal;
+  margin-bottom: 1.625rem;
+}
+
+.title {
+  color: #F1A10A;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.articleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+  padding: 7.75rem 15.625rem 10.5rem;
+  font-size: 1.5rem;
+}
