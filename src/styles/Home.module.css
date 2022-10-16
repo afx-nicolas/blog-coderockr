@@ -4,3 +4,10 @@
   grid-row-gap: 5rem;
   margin-top: 3.75rem;
 }
+
+@media screen and (max-width: 1280px) {
+  .articles {
+    display: flex;
+    flex-direction: column;
+  }
+}
