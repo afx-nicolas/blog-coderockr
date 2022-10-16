@@ -35,3 +35,9 @@
 .navItem:hover {
   color: #DCDCDC;
 }
+
+@media screen and (max-width: 768px) {
+  .navList {
+    gap: 2rem;
+  }
+}
