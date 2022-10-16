@@ -17,7 +17,7 @@
 
 .cover {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .articleInfo {
@@ -51,4 +51,66 @@
   position: relative;
   padding: 7.75rem 15.625rem 10.5rem;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .articleBody {
+   position: relative;
+    padding: 7.75rem 8rem 10.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .articleBody {
+    padding: 5rem 8rem 7rem;
+  }
+
+  .articleInfo {
+    padding: 0.75rem 4rem;
+  }
+
+  .date {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .author {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .articleHeader {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .articleBody {
+    margin-top: 4rem;
+    padding: 0 3rem 7rem;
+  }
+
+  .articleInfo {
+    padding: 0.75rem 3rem;
+  }
+
+  .coverWrapper {
+    aspect-ratio: 2/1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .articleBody {
+    font-size: 1.25rem;
+    padding: 0 2rem 6rem;
+  }
+
+  .articleInfo {
+    padding: 0.75rem 2rem;
+  }
 }
