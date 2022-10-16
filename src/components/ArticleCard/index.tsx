@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import type { Article } from '../../services/api';
 
@@ -10,10 +11,13 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
       <a className={homeStyles.articleWrapper}>
         <article className={homeStyles.article}>
           <div className={homeStyles.coverWrapper}>
-            <img
+            <Image
               className={homeStyles.cover}
               src={imageUrl}
               alt={title}
+              layout="fill"
+              placeholder="blur"
+              blurDataURL={imageUrl}
             />
           </div>
           <div className={homeStyles.articleContent}>
