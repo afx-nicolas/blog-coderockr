@@ -23,7 +23,7 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
           <div className={styles.articleContent}>
             <span className={styles.author}>{author}</span>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.body}>{article.replace(/<\/?p>/g, '').substring(0, 100) }</p>
+            <p className={styles.body}>{article.replace(/<\/?p>/g, '').substring(0, 50).trimEnd() }...</p>
           </div>
         </article>
       </a>
