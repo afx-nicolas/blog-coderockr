@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 5rem;
+  padding: 0 5rem;
 }
 
 .coverWrapper {
@@ -22,7 +22,7 @@
 
 .cover {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transform: scale(1);
   transition: transform 300ms;
 }
@@ -76,4 +76,116 @@
 .articleWrapper:nth-child(6n + 5) .article > .coverWrapper,
 .articleWrapper:nth-child(6n + 6) .article > .coverWrapper {
   order: 2;
+}
+
+@media screen and (max-width: 1800px) {
+  .articleContent {
+    padding: 0 4rem;
+  }
+
+  .author {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .body {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .articleContent {
+    padding: 0 3rem;
+  }
+
+  .author {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .body {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .article {
+    width: 100%;
+    max-height: unset;
+  }
+
+  .articleContent {
+    padding: 0 4rem;
+  }
+
+  .author {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .body {
+    font-size: 1.25rem;
+  }
+
+  .articleWrapper:nth-child(6n + 3) .article,
+  .articleWrapper:nth-child(6n + 6) .article,
+  .articleWrapper:nth-child(6n + 4) .article,
+  .articleWrapper:nth-child(6n + 5) .article {
+    grid-template-columns: 1fr 2fr;
+    max-height: unset;
+  }
+
+  .articleWrapper:nth-child(6n + 3),
+  .articleWrapper:nth-child(6n + 6) {
+    width: 100%;
+  }
+
+  .articleWrapper:nth-child(6n + 4) .article > .coverWrapper,
+  .articleWrapper:nth-child(6n + 5) .article > .coverWrapper,
+  .articleWrapper:nth-child(6n + 6) .article > .coverWrapper {
+    order: 0;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .articleContent {
+    padding: 3rem 5rem;
+  }
+
+  .article {
+    grid-template-columns: 1fr;
+  }
+
+  .coverWrapper {
+    aspect-ratio: 2/1;
+  }
+
+  .articleWrapper:nth-child(6n + 3) .article,
+  .articleWrapper:nth-child(6n + 6) .article,
+  .articleWrapper:nth-child(6n + 4) .article,
+  .articleWrapper:nth-child(6n + 5) .article {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .articleContent {
+    padding: 2rem;
+  }
 }
