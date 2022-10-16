@@ -24,3 +24,12 @@ export const getArticles: GetArticles = async (page = 1, articlesPerPage = 10) =
 
   return data as Article[];
 };
+
+type GetArticleById = (id: string) => Promise<Article>;
+
+export const getArticleById: GetArticleById = async (id) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles/${id}`);
+  const data = await response.json();
+
+  return data as Article;
+}
