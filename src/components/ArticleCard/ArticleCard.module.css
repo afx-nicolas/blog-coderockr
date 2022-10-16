@@ -3,6 +3,7 @@
   background-color: #FFF;
   grid-template-columns: 1fr 2fr;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  max-height: calc(100vw / 6);
 }
 
 .articleContent {
@@ -49,6 +50,7 @@
 .articleWrapper:nth-child(6n + 3) .article,
 .articleWrapper:nth-child(6n + 6) .article {
   grid-template-columns: 1fr 1fr;
+  max-height: unset;
 }
 
 .articleWrapper:nth-child(6n + 3),
