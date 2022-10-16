@@ -21,9 +21,9 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
             />
           </div>
           <div className={styles.articleContent}>
-            <span>{author}</span>
-            <h2>{title}</h2>
-            <p>{article.replace(/<\/?p>/g, '').substring(0, 100) }</p>
+            <span className={styles.author}>{author}</span>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.body}>{article.replace(/<\/?p>/g, '').substring(0, 100) }</p>
           </div>
         </article>
       </a>
