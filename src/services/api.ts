@@ -7,6 +7,15 @@ export interface Article {
   title: string;
 }
 
+type GetAllArticles = () => Promise<Article[]>;
+
+export const getAllArticles: GetAllArticles = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`);
+  const data = await response.json();
+
+  return data as Article[];
+};
+
 type GetArticles = (page?: number, articlesPerPage?: number) => Promise<Article[]>;
 
 export const getArticles: GetArticles = async (page = 1, articlesPerPage = 10) => {
