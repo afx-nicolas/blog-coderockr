@@ -1,7 +1,7 @@
 export interface Article {
   article: string;
   author: string;
-  date: Date;
+  date: string;
   id: string;
   imageUrl: string;
   title: string;
