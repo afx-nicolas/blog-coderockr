@@ -5,6 +5,8 @@ import type { Article } from '../../services/api';
 
 import styles from './ArticleCard.module.css';
 
+import ReadMoreIcon from '../ReadMoreIcon';
+
 const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
   return (
     <Link passHref href={`/post/${id}`}>
@@ -35,6 +37,7 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
             <span className={styles.author}>{author}</span>
             <h2 dangerouslySetInnerHTML={{ __html: title }} className={styles.title} />
             <div dangerouslySetInnerHTML={{ __html: article.substring(0, 50).trimEnd() + '...' }} className={styles.body} />
+            <ReadMoreIcon className={styles.icon} />
           </div>
         </article>
       </a>
