@@ -14,14 +14,25 @@ const ArticlePost = ({ article, id, date, title, author, authorEmail, imageUrl }
     <article className={styles.article}>
       <header className={styles.articleHeader}>
         <div className={styles.coverWrapper}>
-          <Image
-            className={styles.cover}
-            src={imageUrl}
-            alt={title}
-            layout="fill"
-            placeholder="blur"
-            blurDataURL={imageUrl}
-          />
+          {RegExp(/^https\:\/\/source\.unsplash\.com\/.*$/).test(imageUrl)
+            ? (
+              <Image
+                className={styles.cover}
+                src={imageUrl}
+                alt={title}
+                layout="fill"
+                placeholder="blur"
+                blurDataURL={imageUrl}
+              />
+            )
+            : (
+              <Image
+                className={styles.cover}
+                src={imageUrl}
+                alt={title}
+              />
+            )
+          }
         </div>
         <div className={styles.articleInfo}>
           <span className={styles.date}>{articleDate && articleDate.toLocaleString('default', dateOptions)}</span>

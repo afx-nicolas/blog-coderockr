@@ -11,14 +11,25 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
       <a className={styles.articleWrapper}>
         <article className={styles.article}>
           <div className={styles.coverWrapper}>
-            <Image
-              className={styles.cover}
-              src={imageUrl}
-              alt={title}
-              layout="fill"
-              placeholder="blur"
-              blurDataURL={imageUrl}
-            />
+            {RegExp(/^https\:\/\/source\.unsplash\.com\/.*$/).test(imageUrl)
+              ? (
+                <Image
+                  className={styles.cover}
+                  src={imageUrl}
+                  alt={title}
+                  layout="fill"
+                  placeholder="blur"
+                  blurDataURL={imageUrl}
+                />
+              )
+              : (
+                <Image
+                  className={styles.cover}
+                  src={imageUrl}
+                  alt={title}
+                />
+              )
+            }
           </div>
           <div className={styles.articleContent}>
             <span className={styles.author}>{author}</span>
