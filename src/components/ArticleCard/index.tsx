@@ -22,8 +22,8 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
           </div>
           <div className={styles.articleContent}>
             <span className={styles.author}>{author}</span>
-            <h2 className={styles.title}>{title.replace(/\<[^>]*\>/gi, '')}</h2>
-            <p className={styles.body}>{article.replace(/<\/?p>/g, '').substring(0, 50).trimEnd() }...</p>
+            <h2 dangerouslySetInnerHTML={{ __html: title }} className={styles.title} />
+            <div dangerouslySetInnerHTML={{ __html: article.substring(0, 50).trimEnd() + '...' }} className={styles.body} />
           </div>
         </article>
       </a>

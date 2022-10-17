@@ -26,7 +26,7 @@ const ArticlePost = ({ article, id, date, title, author, authorEmail, imageUrl }
         <div className={styles.articleInfo}>
           <span className={styles.date}>{articleDate && articleDate.toLocaleString('default', dateOptions)}</span>
           <address className={styles.author}><a href={`mailto:${authorEmail}`}>{author}</a></address>
-          <h1 className={styles.title}>{title.replace(/\<[^>]*\>/gi, '')}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: title }} className={styles.title} />
         </div>
       </header>
       <section dangerouslySetInnerHTML={{ __html: article }} className={styles.articleBody} />
