@@ -1,3 +1,5 @@
+import DOMPurify from 'isomorphic-dompurify';
+
 import { validateArrayObjects } from '../lib';
 import type { FieldSchema } from '../lib';
 
@@ -26,8 +28,9 @@ type GetAllArticles = () => Promise<Article[]>;
 export const getAllArticles: GetAllArticles = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`);
   const data = await response.json();
+  const articles = data.map((article: Article) => ({ ...article, title: DOMPurify.sanitize(article.title), article: DOMPurify.sanitize(article.article) }));
 
-  return validateArrayObjects(data, ResponseSchema);
+  return validateArrayObjects(articles, ResponseSchema);
 };
 
 type GetArticles = (page?: number, articlesPerPage?: number) => Promise<Article[]>;
@@ -35,8 +38,9 @@ type GetArticles = (page?: number, articlesPerPage?: number) => Promise<Article[
 export const getArticles: GetArticles = async (page = 1, articlesPerPage = 10) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles?_page=${page}&_limit=${articlesPerPage}&_sort=date&_order=desc`);
   const data = await response.json();
+  const articles = data.map((article: Article) => ({ ...article, title: DOMPurify.sanitize(article.title), article: DOMPurify.sanitize(article.article) }));
 
-  return validateArrayObjects(data, ResponseSchema);
+  return validateArrayObjects(articles, ResponseSchema);
 };
 
 type GetArticleById = (id: string) => Promise<Article>;
@@ -44,6 +48,7 @@ type GetArticleById = (id: string) => Promise<Article>;
 export const getArticleById: GetArticleById = async (id) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles/${id}`);
   const data = await response.json();
+  const article: Article = { ...data, title: DOMPurify.sanitize(data.title), article: DOMPurify.sanitize(data.article) };
 
-  return data as Article;
+  return article;
 }
