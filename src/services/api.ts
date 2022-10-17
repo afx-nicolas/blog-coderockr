@@ -1,3 +1,6 @@
+import { validateArrayObjects } from '../lib';
+import type { FieldSchema } from '../lib';
+
 export interface Article {
   article: string;
   author: string;
@@ -8,13 +11,23 @@ export interface Article {
   title: string;
 }
 
+export const ResponseSchema: FieldSchema[] = [
+  { field: 'id', type: 'string' },
+  { field: 'author', type: 'string' },
+  { field: 'authorEmail', type: 'string' },
+  { field: 'title', type: 'string' },
+  { field: 'article', type: 'string' },
+  { field: 'date', type: 'string' },
+  { field: 'imageUrl', type: 'string' },
+]
+
 type GetAllArticles = () => Promise<Article[]>;
 
 export const getAllArticles: GetAllArticles = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`);
   const data = await response.json();
 
-  return data as Article[];
+  return validateArrayObjects(data, ResponseSchema);
 };
 
 type GetArticles = (page?: number, articlesPerPage?: number) => Promise<Article[]>;
@@ -23,7 +36,7 @@ export const getArticles: GetArticles = async (page = 1, articlesPerPage = 10) =
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles?_page=${page}&_limit=${articlesPerPage}&_sort=date&_order=desc`);
   const data = await response.json();
 
-  return data as Article[];
+  return validateArrayObjects(data, ResponseSchema);
 };
 
 type GetArticleById = (id: string) => Promise<Article>;
