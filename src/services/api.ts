@@ -28,6 +28,11 @@ type GetAllArticles = () => Promise<Article[]>;
 export const getAllArticles: GetAllArticles = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`);
   const data = await response.json();
+
+  if (!data) {
+    return [];
+  }
+
   const articles = data.map((article: Article) => ({ ...article, title: DOMPurify.sanitize(article.title), article: DOMPurify.sanitize(article.article) }));
 
   return validateArrayObjects(articles, ResponseSchema);
@@ -38,16 +43,26 @@ type GetArticles = (page?: number, articlesPerPage?: number) => Promise<Article[
 export const getArticles: GetArticles = async (page = 1, articlesPerPage = 10) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles?_page=${page}&_limit=${articlesPerPage}&_sort=date&_order=desc`);
   const data = await response.json();
+  
+  if (!data) {
+    return [];
+  }
+
   const articles = data.map((article: Article) => ({ ...article, title: DOMPurify.sanitize(article.title), article: DOMPurify.sanitize(article.article) }));
 
   return validateArrayObjects(articles, ResponseSchema);
 };
 
-type GetArticleById = (id: string) => Promise<Article>;
+type GetArticleById = (id: string) => Promise<Article | null>;
 
 export const getArticleById: GetArticleById = async (id) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles/${id}`);
   const data = await response.json();
+
+  if(Object.keys(data).length === 0) {
+    return null;
+  }
+
   const article: Article = { ...data, title: DOMPurify.sanitize(data.title), article: DOMPurify.sanitize(data.article) };
 
   return article;
