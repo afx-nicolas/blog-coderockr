@@ -92,6 +92,7 @@ const NewPostPage = () => {
               type="text"
               label="Title"
               placeholder="Fill the title"
+              required
             />
             <InputGroup
               onChange={(e) => handleDispatch(e, 'author')}
@@ -99,6 +100,7 @@ const NewPostPage = () => {
               type="text"
               label="Author"
               placeholder="Fill the author name"
+              required
             />
             <InputGroup
               onChange={(e) => handleDispatch(e, 'authorEmail')}
@@ -106,6 +108,7 @@ const NewPostPage = () => {
               type="email"
               label="Author E-mail"
               placeholder="Fill the author e-mail"
+              required
             />
             <InputGroup
               onChange={(e) => handleDispatch(e, 'imageUrl')}
@@ -113,6 +116,7 @@ const NewPostPage = () => {
               type="url"
               label="Image URL"
               placeholder="Fill the image URL"
+              required
             />
             <InputGroup
               onChange={(e) => handleDispatch(e, 'article')}
@@ -120,6 +124,7 @@ const NewPostPage = () => {
               type="textarea"
               label="Post"
               placeholder="Post..."
+              required
             />
             <button className={styles.submit}>
               <PencilIcon />
