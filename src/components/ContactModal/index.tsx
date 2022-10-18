@@ -1,14 +1,20 @@
+import { useContext } from 'react';
+
 import styles from './ContactModal.module.css';
+
+import { modalContext } from '../../contexts/ModalContext';
 
 import SubmitIcon from '../SubmitIcon';
 import { X } from 'phosphor-react';
 
 const ContactModel = () => {
+  const { closeModal } = useContext(modalContext);
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.content}>
-          <button className={styles.closeBtn}>
+          <button onClick={closeModal} className={styles.closeBtn}>
             <X className={styles.closeIcon} size={48} />
           </button>
           <span className={styles.heading}>Contact</span>
