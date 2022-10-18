@@ -33,9 +33,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link passHref href="/">
-          <a onClick={closeModal} id={styles.logo}>Rockr Blog</a>
-        </Link>
+        <h1 id={styles.logo}>
+          <Link passHref href="/">
+            <a onClick={closeModal}>Rockr Blog</a>
+          </Link>
+        </h1>
         <nav>
           <ul ref={nav} className={styles.navList}>
             <li className={styles.navListItem}>
