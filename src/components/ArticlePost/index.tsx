@@ -26,7 +26,7 @@ const ArticlePost = ({ article, id, date, title, author, authorEmail, imageUrl }
               />
             )
             : (
-              <Image
+              <img
                 className={styles.cover}
                 src={imageUrl}
                 alt={title}

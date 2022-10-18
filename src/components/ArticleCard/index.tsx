@@ -25,7 +25,7 @@ const ArticleCard = ({ id, article, imageUrl, title, author }: Article) => {
                 />
               )
               : (
-                <Image
+                <img
                   className={styles.cover}
                   src={imageUrl}
                   alt={title}
