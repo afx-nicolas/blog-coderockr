@@ -1,8 +1,19 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+
+import '../styles/globals.css';
+
+import ModalContextProvider from '../contexts/ModalContext';
+
+import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+
+  return (
+    <ModalContextProvider>
+      <Header />
+      <Component {...pageProps} />
+    </ModalContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
