@@ -52,3 +52,28 @@ export const getArticleById: GetArticleById = async (id) => {
 
   return article;
 }
+
+interface NewArticle {
+  article: string;
+  author: string;
+  authorEmail: string;
+  date: string;
+  imageUrl: string;
+  title: string;
+}
+
+type SendArticle = (article: NewArticle) => Promise<any>;
+
+export const sendArticle: SendArticle = async (article) => {
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`, {
+    method: 'POST',
+    body: JSON.stringify(article),
+    headers
+  });
+  const data = await response.json();
+
+  return data;
+}
