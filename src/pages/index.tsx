@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css';
 import { getArticles } from '../services/api';
 import type { Article } from '../services/api';
 
-import Header from '../components/Header';
 import ArticleCard from '../components/ArticleCard';
 import LoadingRing from '../components/LoadingRing';
 

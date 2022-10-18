@@ -5,7 +5,6 @@ import styles from '../../styles/Post.module.css';
 import { getAllArticles, getArticleById } from '../../services/api';
 import type { Article } from '../../services/api';
 
-import Header from '../../components/Header';
 import ArticlePost from '../../components/ArticlePost';
 
 interface ArticlePageProps {
