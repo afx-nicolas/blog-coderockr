@@ -29,13 +29,20 @@
   gap: 6rem;
 }
 
-.navListItem {
+.navListItem,
+.contactBtn  {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
   font-size: 2rem;
   font-weight: 500;
   transition: color 150ms;
 }
 
-.navListItem:hover {
+.navListItem:hover,
+.contactBtn:hover {
   color: #DCDCDC;
 }
 
@@ -66,7 +73,12 @@
     transition: background-color 150ms;
   }
 
-  .navListItem:hover {
+  .contactBtn {
+    transition: background-color 150ms;
+  }
+
+  .navListItem:hover,
+  .contactBtn:hover {
     color: #FFF;
     background-color: #2A2A2A;
   }
