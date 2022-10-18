@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog Coderockr
 
-## Getting Started
+| Desktop | Mobile |
+| ------- | ------ |
+| ![Desktop](./screenshots/desktop-coderockr.png) | ![Mobile](./screenshots/mobile-coderockr.png) |
 
-First, run the development server:
+## Features :star:
 
-```bash
+- Infinite scroll page
+- Single article page
+- Contact modal
+- XSS (Cross-site scripting) Prevention
+- Responsive layout
+- Post creation
+- Performance
+- SEO
+- SSR (Server-side Rendering)
+
+## Dependencies :package:
+
+- [Next.js](https://nextjs.org/) - Modern framework to render React  on the server (SSR)
+- [DOMPurify](https://github.com/cure53/DOMPurify) and [Isomorphic DOMPurify](https://github.com/kkomelin/isomorphic-dompurify) - Sanitize content and prevent XSS
+- [Phosphor React](https://phosphoricons.com/) - Icons library
+
+## Running the project
+
+### Development Server
+
+To run the development server follow the steps:
+
+Create a `.env.local` in the root of the project and put the following content with the API URL:
+
+```env
+NEXT_PUBLIC_API_URL="PUT THE API URL HERE"
+```
+
+Run the application:
+
+```sh
+# NPM
 npm run dev
-# or
+
+# Yarn
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build the Project
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To build and run the project locally follow the steps:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Create a `.env.production` in the root of the project and put the following content with the API URL:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```env
+NEXT_PUBLIC_API_URL="PUT THE API URL HERE"
+```
 
-## Learn More
+Build the application:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+# NPM
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Yarn
+yarn build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+After the build, run the application:
 
-## Deploy on Vercel
+```sh
+# NPM
+npm run start
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Yarn
+yarn start
+```
