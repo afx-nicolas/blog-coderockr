@@ -40,8 +40,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
       props: {
-        article
-      }
+        article,
+      },
+      revalidate: 60 * 30, // 30 minutes
     };
   } catch {
     return {
