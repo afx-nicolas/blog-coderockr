@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
+import ContactModel from '../../components/ContactModal';
+
 interface ModalContextProps {
   isModalOpen: boolean;
   openModal: () => void;
@@ -34,6 +36,7 @@ const ModalContextProvider = ({ children }: ModalContextProviderProps) => {
   return (
     <modalContext.Provider value={props}>
       { children }
+      { isModalOpen && <ContactModel />}
     </modalContext.Provider>
   );
 }
