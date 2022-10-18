@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import styles from '../../styles/New.module.css';
 
+import { sendArticle } from '../../services/api';
+
 import InputGroup from '../../components/InputGroup';
 import PencilIcon from '../../components/PencilIcon';
 
@@ -58,6 +60,7 @@ const NewPostPage = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    sendArticle({ ...state, date: new Date().toISOString() });
   }
 
   return (
