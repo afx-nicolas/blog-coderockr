@@ -9,7 +9,7 @@ interface InputGroupProps {
   placeholder: string;
   label: string;
   required?: boolean;
-  value: string;
+  value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
