@@ -40,6 +40,11 @@ const Header = () => {
             <li className={styles.navListItem}>
               <button onClick={openModal} className={[styles.contactBtn, styles.navItem].join(' ')}>Contact</button>
             </li>
+            <li className={styles.navListItem}>
+              <Link passHref href="/post/new">
+                <a className={[styles.navItem, styles.newPost].join(' ')}>New Post</a>
+              </Link>
+            </li>
           </ul>
         </nav>
         { width <= 768 && <HamburguerMenu handleMenuToggle={handleClassName} /> }
