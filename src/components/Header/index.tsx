@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 import styles from './Header.module.css';
@@ -12,6 +12,13 @@ const Header = () => {
   const { openModal } = useContext(modalContext);
   const { width } = useScreenSize();
   const nav = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (width > 768) {
+      nav.current?.classList.remove(styles.active);
+    }
+  }, [width]);
+
 
   const handleClassName = () => {
     nav.current?.classList.toggle(styles.active);
