@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { FormEvent, useContext } from 'react';
 import { X } from 'phosphor-react';
 
 import styles from './ContactModal.module.css';
@@ -11,6 +11,11 @@ import SubmitIcon from '../SubmitIcon';
 const ContactModel = () => {
   const { closeModal } = useContext(modalContext);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    closeModal();
+  }
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -19,7 +24,7 @@ const ContactModel = () => {
             <X className={styles.closeIcon} size={48} />
           </button>
           <span className={styles.heading}>Contact</span>
-          <form className={styles.form}>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <InputGroup type="text" label="Name" placeholder="Fill your full name" />
             <InputGroup type="email" label="E-mail" placeholder="Fill a valid e-mail" />
             <InputGroup type="tel" label="Phone" placeholder="Fill your phone" />
