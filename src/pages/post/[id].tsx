@@ -6,6 +6,7 @@ import { getAllArticles, getArticleById } from '../../services/api';
 import type { Article } from '../../services/api';
 
 import ArticlePost from '../../components/ArticlePost';
+import PageHead from '../../components/PageHead';
 
 interface ArticlePageProps {
   article: Article;
@@ -13,9 +14,11 @@ interface ArticlePageProps {
 
 const ArticlePage = ({ article }: ArticlePageProps) => {
   return (
-    <div className={styles.container}>
-      <ArticlePost {...article} />
-    </div>
+    <PageHead title={`Blog Coderockr | ${article.title}`}>
+      <div className={styles.container}>
+        <ArticlePost {...article} />
+      </div>
+    </PageHead>
   );
 }
 

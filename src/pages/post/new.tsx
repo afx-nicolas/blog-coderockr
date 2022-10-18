@@ -6,6 +6,7 @@ import styles from '../../styles/New.module.css';
 
 import { sendArticle } from '../../services/api';
 
+import PageHead from '../../components/PageHead';
 import InputGroup from '../../components/InputGroup';
 import PencilIcon from '../../components/PencilIcon';
 
@@ -71,61 +72,63 @@ const NewPostPage = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.box}>
-        <div className={styles.cover}>
-          <Image
-            src="https://source.unsplash.com/640x640/?trees"
-            alt="A tree image"
-            layout="fill"
-            placeholder="blur"
-            blurDataURL="https://source.unsplash.com/640x640/?trees"
-          />
+    <PageHead title="Blog Coderockr | New post">
+      <div className={styles.container}>
+        <div className={styles.box}>
+          <div className={styles.cover}>
+            <Image
+              src="https://source.unsplash.com/640x640/?trees"
+              alt="A tree image"
+              layout="fill"
+              placeholder="blur"
+              blurDataURL="https://source.unsplash.com/640x640/?trees"
+            />
+          </div>
+          <span className={styles.heading}>New Post</span>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <InputGroup
+              onChange={(e) => handleDispatch(e, 'title')}
+              value={state.title}
+              type="text"
+              label="Title"
+              placeholder="Fill the title"
+            />
+            <InputGroup
+              onChange={(e) => handleDispatch(e, 'author')}
+              value={state.author}
+              type="text"
+              label="Author"
+              placeholder="Fill the author name"
+            />
+            <InputGroup
+              onChange={(e) => handleDispatch(e, 'authorEmail')}
+              value={state.authorEmail}
+              type="email"
+              label="Author E-mail"
+              placeholder="Fill the author e-mail"
+            />
+            <InputGroup
+              onChange={(e) => handleDispatch(e, 'imageUrl')}
+              value={state.imageUrl}
+              type="url"
+              label="Image URL"
+              placeholder="Fill the image URL"
+            />
+            <InputGroup
+              onChange={(e) => handleDispatch(e, 'article')}
+              value={state.article}
+              type="textarea"
+              label="Post"
+              placeholder="Post..."
+            />
+            <button className={styles.submit}>
+              <PencilIcon />
+              Create Post
+            </button>
+          </form>
         </div>
-        <span className={styles.heading}>New Post</span>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <InputGroup
-            onChange={(e) => handleDispatch(e, 'title')}
-            value={state.title}
-            type="text"
-            label="Title"
-            placeholder="Fill the title"
-          />
-          <InputGroup
-            onChange={(e) => handleDispatch(e, 'author')}
-            value={state.author}
-            type="text"
-            label="Author"
-            placeholder="Fill the author name"
-          />
-          <InputGroup
-            onChange={(e) => handleDispatch(e, 'authorEmail')}
-            value={state.authorEmail}
-            type="email"
-            label="Author E-mail"
-            placeholder="Fill the author e-mail"
-          />
-          <InputGroup
-            onChange={(e) => handleDispatch(e, 'imageUrl')}
-            value={state.imageUrl}
-            type="url"
-            label="Image URL"
-            placeholder="Fill the image URL"
-          />
-          <InputGroup
-            onChange={(e) => handleDispatch(e, 'article')}
-            value={state.article}
-            type="textarea"
-            label="Post"
-            placeholder="Post..."
-          />
-          <button className={styles.submit}>
-            <PencilIcon />
-            Create Post
-          </button>
-        </form>
       </div>
-    </div>
+    </PageHead>
   );
 }
 

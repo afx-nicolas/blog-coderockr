@@ -8,6 +8,7 @@ import type { Article } from '../services/api';
 
 import ArticleCard from '../components/ArticleCard';
 import LoadingRing from '../components/LoadingRing';
+import PageHead from '../components/PageHead';
 
 interface HomeProps {
   initialArticles: Article[]
@@ -45,15 +46,17 @@ const Home: NextPage<HomeProps> = ({ initialArticles, page, articlesPerPage }) =
   }, [articlesPerPage]);
 
   return (
-    <main>
-      <section className={styles.articles}>
-        {articles.map(article => <ArticleCard key={article.id} {...article} />)}
-      </section>
-      <div className={styles.loadingWrapper}>
-        { isLoading && <LoadingRing /> }
-      </div>
-      <div id="load-trigger" className={styles.loadTrigger} />
-    </main>
+    <PageHead title="Blog Coderockr | Home">
+      <main>
+        <section className={styles.articles}>
+          {articles.map(article => <ArticleCard key={article.id} {...article} />)}
+        </section>
+        <div className={styles.loadingWrapper}>
+          { isLoading && <LoadingRing /> }
+        </div>
+        <div id="load-trigger" className={styles.loadTrigger} />
+      </main>
+    </PageHead>
   );
 }
 
