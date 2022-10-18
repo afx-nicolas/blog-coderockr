@@ -1,11 +1,12 @@
 import { useContext } from 'react';
+import { X } from 'phosphor-react';
 
 import styles from './ContactModal.module.css';
 
 import { modalContext } from '../../contexts/ModalContext';
 
+import InputGroup from '../InputGroup';
 import SubmitIcon from '../SubmitIcon';
-import { X } from 'phosphor-react';
 
 const ContactModel = () => {
   const { closeModal } = useContext(modalContext);
@@ -19,22 +20,10 @@ const ContactModel = () => {
           </button>
           <span className={styles.heading}>Contact</span>
           <form className={styles.form}>
-            <div className={styles.inputGroup}>
-              <label className={styles.label} htmlFor="name">Name</label>
-              <input className={styles.input} id="name" type="text" placeholder="Fill your full name" />
-            </div>
-            <div className={styles.inputGroup}>
-              <label className={styles.label} htmlFor="email">E-mail</label>
-              <input className={styles.input} id="email" type="email" placeholder="Fill a valid  e-mail" />
-            </div>
-            <div className={styles.inputGroup}>
-              <label className={styles.label} htmlFor="phone">Phone</label>
-              <input className={styles.input} id="email" type="tel" placeholder="Fill your phone" />
-            </div>
-            <div className={styles.inputGroup}>
-              <label className={styles.label} htmlFor="message">Message</label>
-              <textarea className={styles.textarea} id="message" rows={10} placeholder="Hello..." />
-            </div>
+            <InputGroup type="text" label="Name" placeholder="Fill your full name" />
+            <InputGroup type="email" label="E-mail" placeholder="Fill a valid e-mail" />
+            <InputGroup type="tel" label="Phone" placeholder="Fill your phone" />
+            <InputGroup type="textarea" label="Message" placeholder="Hello..." />
             <button className={styles.submit}>
               <SubmitIcon />
               Submit
