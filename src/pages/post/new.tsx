@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useCallback, useReducer } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import styles from '../../styles/New.module.css';
@@ -48,6 +49,7 @@ const reducer: Reducer = (state, action) => {
 };
 
 const NewPostPage = () => {
+  const router = useRouter();
   const [state, dispatch] = useReducer<Reducer>(reducer, initialState);
 
   const handleDispatch = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, type: ReducerActionType | 'reset') => {
@@ -58,9 +60,14 @@ const NewPostPage = () => {
     dispatch({ type, value: e.target.value })
   }, [dispatch]) ;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    sendArticle({ ...state, date: new Date().toISOString() });
+    const response = await sendArticle({ ...state, date: new Date().toISOString() });
+    dispatch({ type: 'reset' });
+
+    if (!response) return;
+
+    router.push(`/post/${response.id}`);
   }
 
   return (
