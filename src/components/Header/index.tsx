@@ -1,13 +1,15 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import Link from 'next/link';
 
 import styles from './Header.module.css';
 
 import { useScreenSize } from '../../hooks';
+import { modalContext } from '../../contexts/ModalContext';
 
 import HamburguerMenu from '../HamburguerMenu';
 
 const Header = () => {
+  const { openModal } = useContext(modalContext);
   const { width } = useScreenSize();
   const nav = useRef<HTMLUListElement>(null);
 
@@ -29,9 +31,7 @@ const Header = () => {
               </Link>
             </li>
             <li className={styles.navListItem}>
-              <Link passHref href="/contact">
-                <a className={styles.navItem}>Contact</a>
-              </Link>
+              <button onClick={openModal} className={[styles.contactBtn, styles.navItem].join(' ')}>Contact</button>
             </li>
           </ul>
         </nav>
