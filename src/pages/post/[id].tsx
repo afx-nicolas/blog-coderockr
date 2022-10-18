@@ -14,11 +14,8 @@ interface ArticlePageProps {
 
 const ArticlePage = ({ article }: ArticlePageProps) => {
   return (
-    <div>
-      <Header />
-      <div className={styles.container}>
-        <ArticlePost {...article} />
-      </div>
+    <div className={styles.container}>
+      <ArticlePost {...article} />
     </div>
   );
 }

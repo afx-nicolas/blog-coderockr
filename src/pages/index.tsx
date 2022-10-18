@@ -46,18 +46,15 @@ const Home: NextPage<HomeProps> = ({ initialArticles, page, articlesPerPage }) =
   }, [articlesPerPage]);
 
   return (
-    <div>
-      <Header />
-      <main>
-        <section className={styles.articles}>
-          {articles.map(article => <ArticleCard key={article.id} {...article} />)}
-        </section>
-        <div className={styles.loadingWrapper}>
-          { isLoading && <LoadingRing /> }
-        </div>
-        <div id="load-trigger" className={styles.loadTrigger} />
-      </main>
-</div>
+    <main>
+      <section className={styles.articles}>
+        {articles.map(article => <ArticleCard key={article.id} {...article} />)}
+      </section>
+      <div className={styles.loadingWrapper}>
+        { isLoading && <LoadingRing /> }
+      </div>
+      <div id="load-trigger" className={styles.loadTrigger} />
+    </main>
   );
 }
 
