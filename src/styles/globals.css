@@ -5,7 +5,7 @@
 
 body {
   background-image: linear-gradient(90deg, #F1A10A 0%, #342303 100%);
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -30,7 +30,7 @@ time, mark, audio, video {
 }
 
 textarea {
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 a {

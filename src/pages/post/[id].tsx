@@ -1,11 +1,12 @@
-import type { GetStaticProps } from 'next';
+import type { GetServerSideProps } from 'next';
 
 import styles from '../../styles/Post.module.css';
 
-import { getAllArticles, getArticleById } from '../../services/api';
+import { getArticleById } from '../../services/api';
 import type { Article } from '../../services/api';
 
 import ArticlePost from '../../components/ArticlePost';
+import PageHead from '../../components/PageHead';
 
 interface ArticlePageProps {
   article: Article;
@@ -13,36 +14,40 @@ interface ArticlePageProps {
 
 const ArticlePage = ({ article }: ArticlePageProps) => {
   return (
-    <div className={styles.container}>
-      <ArticlePost {...article} />
-    </div>
+    <PageHead title={`Blog Coderockr | ${article.title}`}>
+      <div className={styles.container}>
+        <ArticlePost {...article} />
+      </div>
+    </PageHead>
   );
 }
 
-export const getStaticPaths = async () => {
-  const articles = await getAllArticles();
-  const paths = articles.map(article => ({ params: { id: article.id } }));
-
-  return {
-    paths,
-    fallback: false
-  };
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.id as string;
 
   try {
     const article = await getArticleById(id);
 
+    if (!article) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false
+        }
+      };
+    }
+
     return {
       props: {
-        article
-      }
+        article,
+      },
     };
   } catch {
     return {
-      props: {}
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
     };
   }
 
