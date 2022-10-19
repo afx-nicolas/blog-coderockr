@@ -38,10 +38,10 @@ Run the application:
 
 ```sh
 # NPM
-npm run dev
+npm install && npm run dev
 
 # Yarn
-yarn dev
+yarn install && yarn dev
 ```
 
 ### Build the Project
@@ -58,10 +58,10 @@ Build the application:
 
 ```sh
 # NPM
-npm run build
+npm install && npm run build
 
 # Yarn
-yarn build
+yarn install && yarn build
 ```
 
 After the build, run the application:
